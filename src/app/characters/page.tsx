@@ -1,4 +1,5 @@
 import db from "@/shared/lib/db";
+import Link from "next/link";
 
 // import { CharactersList } from "@/features/characters/components/CharactersList";
 // import { fetchCharacters } from "@/features/characters/services/fetch-characters";
@@ -28,7 +29,9 @@ export default async function CharactersPage() {
       {/* <CharactersList data={data.results} /> */}
 
       {records.map((elem) => (
-        <div key={elem.id}>{elem.name}</div>
+        <div key={elem.id}>
+          <Link href={`/characters/${elem.id}`}>{elem.name}</Link>
+        </div>
       ))}
     </div>
   );

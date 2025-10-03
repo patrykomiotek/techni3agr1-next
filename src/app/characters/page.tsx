@@ -15,6 +15,13 @@ export default async function CharactersPage() {
   //   },
   // });
 
+  // await db.character.update({
+  //   data: {},
+  //   where: {
+  //     id:
+  //   }
+  // })
+
   return (
     <div>
       <h2>Characters List</h2>

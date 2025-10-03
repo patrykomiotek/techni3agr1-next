@@ -7,6 +7,14 @@ export default async function CharactersPage() {
   // const data = await fetchCharacters();
   const records = await db.character.findMany();
 
+  // await db.character.create({
+  //   data: {
+  //     name: "Test 3",
+  //     species: "human",
+  //     status: "alive",
+  //   },
+  // });
+
   return (
     <div>
       <h2>Characters List</h2>

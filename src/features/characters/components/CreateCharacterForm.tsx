@@ -1,3 +1,5 @@
+"use client";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import {
   CreateCharacterDto,
@@ -42,6 +44,9 @@ export const CreateCharacterForm = () => {
         {errors.species && (
           <p style={{ color: "red" }}>{errors.species.message}</p>
         )}
+      </div>
+      <div>
+        <button type="submit">Create</button>
       </div>
     </form>
   );

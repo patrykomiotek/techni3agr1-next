@@ -26,6 +26,7 @@ export default async function CharactersPage() {
   return (
     <div>
       <h2>Characters List</h2>
+      <Link href="/characters/create">Create character</Link>
       {/* <CharactersList data={data.results} /> */}
 
       {records.map((elem) => (

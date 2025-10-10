@@ -5,3 +5,5 @@ export const createCharacterSchema = z.object({
   status: z.enum(["Dead", "Alive"], { error: "Invalid status" }),
   species: z.string().min(1, { error: "Species is required" }),
 });
+
+export type CreateCharacterDto = z.infer<typeof createCharacterSchema>;

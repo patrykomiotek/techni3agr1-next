@@ -1,3 +1,4 @@
+import { RegistrationForm } from "@/features/users/components/Registration/RegistrationForm";
 import { auth } from "@/shared/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
@@ -19,6 +20,7 @@ export default async function Home() {
         </ul>
       </nav>
       <h1>Home</h1>
+      <RegistrationForm />
     </div>
   );
 }

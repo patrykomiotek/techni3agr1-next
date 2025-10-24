@@ -65,8 +65,19 @@ model Account {
   scope                 String?
   password              String?
   createdAt             DateTime  @map("created_at")
-  updatedAt             DateTime  @map("updated_at")
+  updatedAt             DateTime? @map("updated_at")
   user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("accounts")
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String
+  expiresAt  DateTime  @map("expires_at")
+  createdAt  DateTime? @map("created_at")
+  updatedAt  DateTime? @map("updated_at")
+
+  @@map("verifications")
 }

@@ -7,3 +7,6 @@ export const createUserSchema = z.object({
 });
 
 export type CreateUserDto = z.infer<typeof createUserSchema>;
+
+export const loginUserSchema = createUserSchema.omit({ name: true });
+export type LoginUserDto = z.infer<typeof loginUserSchema>;

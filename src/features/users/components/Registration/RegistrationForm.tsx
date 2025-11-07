@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { CreateUserDto, createUserSchema } from "./contracts";
+import { CreateUserDto, createUserSchema } from "../../contracts/users";
 import { authClient } from "@/shared/lib/auth-client";
 
 export const RegistrationForm = () => {

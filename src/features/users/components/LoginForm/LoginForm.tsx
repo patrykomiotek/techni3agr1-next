@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { LoginUserDto, loginUserSchema } from "../../contracts/users";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { LoginUserDto, loginUserSchema } from "../../contracts/users";
 import { Input } from "@/shared/components/Input";
+import { authClient } from "@/shared/lib/auth-client";
 
 export const LoginForm = () => {
   const {
@@ -13,7 +17,15 @@ export const LoginForm = () => {
     resolver: zodResolver(loginUserSchema),
   });
 
-  const onSubmit: SubmitHandler<LoginUserDto> = (data) => {};
+  const onSubmit: SubmitHandler<LoginUserDto> = async (data) => {
+    // console.log({ data });
+
+    const { data: responseData, error } = await authClient.signIn.email({
+      email: data.email,
+      password: data.password,
+      callbackURL: "/",
+    });
+  };
 
   return (
     <form
@@ -22,7 +34,19 @@ export const LoginForm = () => {
     >
       <h2 className="text-xl font-bold text-center">Register</h2>
 
-      <Input label="E-mail" type="email" {...register("email")} />
+      <Input
+        label="E-mail"
+        type="email"
+        {...register("email")}
+        error={errors.email}
+      />
+
+      <Input
+        label="Password"
+        type="password"
+        {...register("password")}
+        error={errors.password}
+      />
 
       {/* <div className="flex flex-col">
         <label className="mb-1 text-sm font-medium">Email</label>
@@ -38,8 +62,6 @@ export const LoginForm = () => {
           </span>
         )}
       </div> */}
-
-      <Input label="Password" type="password" {...register("password")} />
 
       {/* <div className="flex flex-col">
         <label className="mb-1 text-sm font-medium">Password</label>

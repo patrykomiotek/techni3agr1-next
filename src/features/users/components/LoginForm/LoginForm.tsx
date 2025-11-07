@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LoginUserDto, loginUserSchema } from "../../contracts/users";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@/shared/components/Input";
 
 export const LoginForm = () => {
   const {
@@ -21,7 +22,9 @@ export const LoginForm = () => {
     >
       <h2 className="text-xl font-bold text-center">Register</h2>
 
-      <div className="flex flex-col">
+      <Input label="E-mail" type="email" {...register("email")} />
+
+      {/* <div className="flex flex-col">
         <label className="mb-1 text-sm font-medium">Email</label>
         <input
           id="email"
@@ -34,9 +37,11 @@ export const LoginForm = () => {
             {errors.email.message}
           </span>
         )}
-      </div>
+      </div> */}
 
-      <div className="flex flex-col">
+      <Input label="Password" type="password" {...register("password")} />
+
+      {/* <div className="flex flex-col">
         <label className="mb-1 text-sm font-medium">Password</label>
         <input
           id="password"
@@ -49,7 +54,7 @@ export const LoginForm = () => {
             {errors.password.message}
           </span>
         )}
-      </div>
+      </div> */}
       <button
         type="submit"
         className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700"

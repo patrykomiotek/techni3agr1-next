@@ -25,7 +25,7 @@ export const sendContactEmail = async (
     // to: ['patryk.omiotek@technischools.com'],
     to: [data.email],
     subject: data.title,
-    html: `<p>${data.content}</p>`,
+    // html: `<p>${data.content}</p>`,
     react: Email(),
   });
 

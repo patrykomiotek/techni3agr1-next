@@ -3,7 +3,7 @@
 import { type CreateEmailResponseSuccess, Resend } from 'resend';
 import { ContactDto } from '../contracts/contact.dto';
 
-const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 type OperationResult<T> =
   | {
@@ -19,13 +19,16 @@ export const sendContactEmail = async (
   data: ContactDto,
 ): Promise<OperationResult<CreateEmailResponseSuccess | null>> => {
   const response = await resend.emails.send({
-    from: data.email,
-    to: ['patryk.omiotek@technischools.com'],
+    // from: data.email,
+    from: 'Powiadomienia <noreply@updates.webamigos.pl>',
+    // to: ['patryk.omiotek@technischools.com'],
+    to: [data.email],
     subject: data.title,
     html: `<p>${data.content}</p>`,
   });
 
   if (response.error) {
+    console.error(response.error);
     return {
       success: false,
     };

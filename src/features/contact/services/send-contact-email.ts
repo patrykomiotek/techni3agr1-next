@@ -2,6 +2,7 @@
 
 import { type CreateEmailResponseSuccess, Resend } from 'resend';
 import { ContactDto } from '../contracts/contact.dto';
+import Email from '../../../../emails/my-email';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -25,6 +26,7 @@ export const sendContactEmail = async (
     to: [data.email],
     subject: data.title,
     html: `<p>${data.content}</p>`,
+    react: Email(),
   });
 
   if (response.error) {
